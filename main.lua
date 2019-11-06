@@ -11,15 +11,30 @@ function love.load()
 
 	--loading sprites and background--
 	playerSprite = love.graphics.newImage("lover1.PNG")
+
+	--made faux debug text-- 
+	text = "Nothing here"
 end
 
 function love.update(dt)
-
+	love.graphics.print(text, 300,300)
 end
 
 function love.draw()
-	love.graphics.draw(playerSprite) --wait can I make a player and constructor that has this? 
+	PlayerConstructor()  -- is this only making one? or many?
+	--wait can I make a player and constructor that has this? 
+	love.graphics.print(text, 300,300)
 end
 
+function PlayerConstructor()
+	love.graphics.draw(playerSprite)
 
+	
+	
+end
 
+function love.keypress( key )
+   if key == "W" then
+      text = "W mouse button has been pressed"
+   end
+end
