@@ -78,12 +78,12 @@ function love.keypressed(key, isrepeat)
       		flashlightBattery = flashlightBattery - 1
       	end
    elseif key == "a" then
-   		playerX = player.X - 2 
+   		player.x = player.x - 2 
    		--do something
    	elseif key == "s" then 
    		--do something
    	elseif key == "d" then
-   		playerX = player.X + 2
+   		player.x = player.x + 2
    		--do something
    	elseif key == "escape"then
    		love.event.quit()
