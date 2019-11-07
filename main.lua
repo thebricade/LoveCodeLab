@@ -11,30 +11,44 @@ function love.load()
 
 	--loading sprites and background--
 	playerSprite = love.graphics.newImage("lover1.PNG")
+	playerX = 100
+	playerY = 500 
 
 	--made faux debug text-- 
 	text = "Nothing here"
+	counter = 0
 end
 
 function love.update(dt)
-	love.graphics.print(text, 300,300)
+	--love.graphics.print(text, 300,300)
+	counter = counter + 1
 end
 
 function love.draw()
 	PlayerConstructor()  -- is this only making one? or many?
-	--wait can I make a player and constructor that has this? 
+	--wait can I make a player and constructor that has this?
 	love.graphics.print(text, 300,300)
 end
 
 function PlayerConstructor()
-	love.graphics.draw(playerSprite)
-
-	
-	
+	love.graphics.draw(playerSprite,playerX,playerY) 
+	-- love.graphics.drawq which adds a canvis, quad and x, y)
+		
 end
 
-function love.keypress( key )
-   if key == "W" then
+function love.keypressed(key)
+   
+--Player Controller-- 
+   if key == "w" then  --did you know Keys are case sensitive and can't be uppercase D:< 
       text = "W mouse button has been pressed"
-   end
+   elseif key == "a" then
+   		playerX = playerX - 2 
+   		--do something
+   	elseif key == "s" then 
+   		--do something
+   	elseif key == "d" then
+   		playerX = playerX + 2
+   		--do something
+   	end
+
 end
