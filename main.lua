@@ -1,6 +1,20 @@
 local playerSprite
 local flashlightSprite
 
+enemy = {
+		x = 0,
+		y = 0 ,
+		moveSpeed = 4,
+		sprite
+}
+
+player = {
+		x = 100,
+		y = 500,
+		moveSpeed = 3, 
+		sprite = love.graphics.newImage("lover1.PNG")
+}
+
 --there's a lot about event driven programming to add things to a event queue before doing them
 
 function love.load()
@@ -14,9 +28,9 @@ function love.load()
 	love.graphics.setBackgroundColor(red,green,blue)
 
 	--loading sprites and background--
-	playerSprite = love.graphics.newImage("lover1.PNG")
-	playerX = 100
-	playerY = 500 
+	--playerSprite = love.graphics.newImage("lover1.PNG")
+	--playerX = 100
+	--playerY = 500 
 
 	-- Flashlight ---
 	flashlightSprite = love.graphics.newImage("lover1.PNG") --just use same sprite for now
@@ -41,13 +55,17 @@ function love.draw()
 end
 
 function PlayerConstructor()
-	love.graphics.draw(playerSprite,playerX,playerY) 
+	love.graphics.draw(player.sprite,player.x,player.y) 
 	-- love.graphics.drawq which adds a canvas, quad and x, y)
 		
 end
 
 function FlashlightConstructor()
 	love.graphics.draw(flashlightSprite,0,0)
+end
+
+function FlashlightMoreBattery(sizeOfBattery)
+	flashlightBattery = flashlightBattery + sizeOfBattery
 end
 
 function love.keypressed(key, isrepeat)
@@ -60,12 +78,12 @@ function love.keypressed(key, isrepeat)
       		flashlightBattery = flashlightBattery - 1
       	end
    elseif key == "a" then
-   		playerX = playerX - 2 
+   		playerX = player.X - 2 
    		--do something
    	elseif key == "s" then 
    		--do something
    	elseif key == "d" then
-   		playerX = playerX + 2
+   		playerX = player.X + 2
    		--do something
    	elseif key == "escape"then
    		love.event.quit()
