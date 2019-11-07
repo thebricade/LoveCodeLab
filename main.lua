@@ -1,8 +1,11 @@
 local playerSprite
 
+--there's a lot about event driven programming to add things to a event queue before doing them
+
 function love.load()
 	--love.window.setMode(500, 500, {borderless=true})
 	love.window.setFullscreen(true, "desktop")
+	love.keyboard.setKeyRepeat(true)  --this has to be set to hold down keypresses
 	--LOVE uses 0-1 not 0-255
 	red = 115/255
 	green = 27/255
@@ -36,7 +39,7 @@ function PlayerConstructor()
 		
 end
 
-function love.keypressed(key)
+function love.keypressed(key, isrepeat)
    
 --Player Controller-- 
    if key == "w" then  --did you know Keys are case sensitive and can't be uppercase D:< 
@@ -49,6 +52,11 @@ function love.keypressed(key)
    	elseif key == "d" then
    		playerX = playerX + 2
    		--do something
+   	elseif key == "escape"then
+   		love.event.quit()
    	end
-
 end
+
+
+
+
