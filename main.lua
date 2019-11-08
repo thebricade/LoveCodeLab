@@ -5,7 +5,8 @@ enemy = {
 		x = 0,
 		y = 0 ,
 		moveSpeed = 4,
-		sprite
+		sprite = load.graphics.newImage("lover1.PNG"), 
+		numberOfEnemies = 0
 }
 
 player = {
@@ -15,6 +16,14 @@ player = {
 		sprite = love.graphics.newImage("lover1.PNG")
 }
 
+flashlight = {
+		x = 300, --don't forget commas 
+		y= 300,
+		flicker = false, 
+		isOn = false,
+		power = 100,
+		sprite = love.graphics.newImage("flashlight.PNG")
+}
 --there's a lot about event driven programming to add things to a event queue before doing them
 
 function love.load()
@@ -33,10 +42,10 @@ function love.load()
 	--playerY = 500 
 
 	-- Flashlight ---
-	flashlightSprite = love.graphics.newImage("lover1.PNG") --just use same sprite for now
-	flashlightBattery = 100;
-	flashLightX = playerX; 
-	flashLightY = playerY; 
+	--flashlightSprite = love.graphics.newImage("lover1.PNG") --just use same sprite for now
+	--flashlightBattery = 100;
+	--flashLightX = playerX; 
+	--flashLightY = playerY; 
 
 	--made faux debug text-- 
 	text = "Nothing here"
@@ -44,14 +53,17 @@ function love.load()
 end
 
 function love.update(dt)
-	--love.graphics.print(text, 300,300)
+	--love.graphics.print("hello I am here", 300,300)
 	counter = counter + 1
 end
 
 function love.draw()
 	PlayerConstructor()  -- is this only making one? or many?
 	--wait can I make a player and constructor that has this?
-	love.graphics.print(flashlightBattery, 300,300)
+	love.graphics.print(flashlight.power, 300,300)
+	if flashlight.isOn == true then
+		love.graphics.draw(flashlight.sprite,playerx,playerY)
+	end
 end
 
 function PlayerConstructor()
@@ -60,12 +72,12 @@ function PlayerConstructor()
 		
 end
 
-function FlashlightConstructor()
-	love.graphics.draw(flashlightSprite,0,0)
-end
+--function FlashlightConstructor()
+--	love.graphics.draw(flashlight.sprite,playerX,playerY)
+--end
 
 function FlashlightMoreBattery(sizeOfBattery)
-	flashlightBattery = flashlightBattery + sizeOfBattery
+	flashlight.power = flashlight.power + sizeOfBattery
 end
 
 function love.keypressed(key, isrepeat)
@@ -73,9 +85,12 @@ function love.keypressed(key, isrepeat)
 --Player Controller-- 
    if key == "w" then  --did you know Keys are case sensitive and can't be uppercase D:< 
       	--check if we still have battery in the flashlight 
-      	if flashlightBattery > 0 then
-      		FlashlightConstructor()
-      		flashlightBattery = flashlightBattery - 1
+      	if flashlight.power > 0 then
+      		--FlashlightConstructor()
+      		flashlight.isOn = true
+      		flashlight.power = flashlight.power - 1
+      	else 
+      		flashlight.isOn = false -- this should turn into a statemachine? so we can turn it off
       	end
    elseif key == "a" then
    		player.x = player.x - 2 
@@ -88,6 +103,10 @@ function love.keypressed(key, isrepeat)
    	elseif key == "escape"then
    		love.event.quit()
    	end
+end
+
+function love.keyreleased( key )
+	flashlight.isOn = false
 end
 
 
