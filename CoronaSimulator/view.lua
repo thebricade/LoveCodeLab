@@ -27,11 +27,15 @@ function view.initialze()
 	local circ = display.newCircle( 0, 0, 64 )
 	--local plotSprite = display.newSprite( spritePlot, plotAnimation )
 	view.plots = {} -- array to store plant plots 
+
+	local GRID_SPACE = 60
+	local currentX = 0 
 	
 	for i=1,10 do
 		view.plots[i] = display.newImageRect("plot.png",50,50) -- makes an image at 0,0
-		view.plots[i].x = _W/4 + i * (i+3)
+		view.plots[i].x = _W/4 + (i-1) * GRID_SPACE
 		view.plots[i].y = _H/3.5 
+
 		--view.plots[i] = 1
 		--view.view.plots[i] = graphics.newImageSheet( "plot.png", 100,100 )
 		--view.plots{i} = display.newImage("plot.png", 100,100)
