@@ -7,8 +7,7 @@ local controller = { }
 --
 --		Initialise the model.
 --
-function controller.initialise()
-																	-- initialise the score (part 4, exercise)
+function controller.initialze()
 
 end
 

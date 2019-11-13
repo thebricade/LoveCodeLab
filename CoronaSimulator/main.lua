@@ -9,14 +9,12 @@
 
 display.setStatusBar( display.HiddenStatusBar ) --hides battery and time bar on phones
 
-_H = display.contentHeight; 
-_W = display.contentWidth; 
+
 
 local model = require("model") 
 local view = require("view")
 local controller = require("controller")
 
-
-model.initialise()
-view.initialise()
-controller.initialise()
+model.initialze()
+view.initialze()
+controller.initialze()
