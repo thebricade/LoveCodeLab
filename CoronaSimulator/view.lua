@@ -5,12 +5,17 @@
 local view = { }
 _H = display.contentHeight; 
 _W = display.contentWidth; 
+
+--local _model = model
+
 --
 --		Initialise the model.
 --
-function view.initialze()
-	local screenText = display.newText( "You have" ,_W/2,_H/8, native.systemFontBold )	
+function view.initialze(model)
+	local screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )	
+	--figure out how append string and variable 
 
+	--model.updatePlantsHarvest()
 	--[[local plotAnimation = 
 	{
 		name = "plot", 
@@ -28,23 +33,24 @@ function view.initialze()
 	--local plotSprite = display.newSprite( spritePlot, plotAnimation )
 	view.plots = {} -- array to store plant plots 
 
-	local GRID_SPACE = 60
 	local GRID_WIDTH = 5
 	local GRID_HEIGHT = 5
 	local currentX = 0 
+	local GRID_X_OFFSET = _W / 3.5
+	local GRID_Y_OFFSET = _H / 6
 	
 	for i=1,GRID_WIDTH do
 
 		for j=1,GRID_HEIGHT do
-			view.plots[i] = display.newImage("plot.png",30,30) -- for some reason this is no longer resizing the sprites
-			view.plots[i].x = _W/4 *i
-			view.plots[i].y = _H/3.5 *j
+			view.plots[i] = display.newImageRect("plot.png",30,30) -- for some reason this is no longer resizing the sprites
+			view.plots[i].x = GRID_X_OFFSET + (_W / 10 * (i - 1))
+			view.plots[i].y = GRID_Y_OFFSET + (_H / 8 * (j))
 			print(i)
 		end
 
 		--[[
 		view.plots[i] = display.newImageRect("plot.png",50,50) -- makes an image at 0,0
-		-- this is a for loop inside of a for loop 
+		-- this is a for loop inside of a for loop7
 		view.plots[i].x = _W/4 + (i-1) * GRID_SPACE
 		view.plots[i].y = _H/3.5 
 
@@ -55,6 +61,10 @@ function view.initialze()
 	end
 
 
+end
+
+function updatePlantsHarvest( ... )
+	-- body
 end
 
 
