@@ -42,7 +42,7 @@ function view.initialze(model)
 	for i=1,GRID_WIDTH do
 
 		for j=1,GRID_HEIGHT do
-			view.plots[i] = display.newImageRect("plot.png",30,30) -- for some reason this is no longer resizing the sprites
+			view.plots[i] = display.newImageRect("plot.png",30,30) 
 			view.plots[i].x = GRID_X_OFFSET + (_W / 10 * (i - 1))
 			view.plots[i].y = GRID_Y_OFFSET + (_H / 8 * (j))
 			print(i)
