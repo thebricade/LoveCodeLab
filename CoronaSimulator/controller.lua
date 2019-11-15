@@ -9,11 +9,12 @@ local controller = { }
 --
 --		Initialise the model.
 --
-function controller.initialze(view, model)
+function controller.initialze(model)
 
 end
 
 --you would maybe ant to create something like update
+--[[
 function controller.update()
 end
 
@@ -25,5 +26,6 @@ function plots:touch (event, view, model)
 end
 
 object:addEventListener( "touch", plots )
+--]]
 
 return controller -- need to return
