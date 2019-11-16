@@ -47,7 +47,7 @@ function view.initialze(model)
 			view.plots[i].y = GRID_Y_OFFSET + (_H / 8 * (j))
 			print(i)
 		end
-
+	end
 		--[[
 		view.plots[i] = display.newImageRect("plot.png",50,50) -- makes an image at 0,0
 		-- this is a for loop inside of a for loop7
@@ -58,7 +58,7 @@ function view.initialze(model)
 		--view.view.plots[i] = graphics.newImageSheet( "plot.png", 100,100 )
 		--view.plots{i} = display.newImage("plot.png", 100,100)
 		print(i)--]]
-	end
+	
 
 
 end
