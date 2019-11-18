@@ -3,6 +3,9 @@
 ]]
 
 local view = { }
+
+view.plots = {} -- array to store plant plots 
+
 _H = display.contentHeight; 
 _W = display.contentWidth; 
 
@@ -11,6 +14,9 @@ _W = display.contentWidth;
 --
 --		Initialise the model.
 --
+
+	
+
 function view.initialze(model)
 	local screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )	
 	--figure out how append string and variable 
@@ -31,7 +37,9 @@ function view.initialze(model)
 
 	local circ = display.newCircle( 0, 0, 64 )
 	--local plotSprite = display.newSprite( spritePlot, plotAnimation )
-	view.plots = {} -- array to store plant plots 
+	
+
+
 
 	local GRID_WIDTH = 5
 	local GRID_HEIGHT = 5
@@ -45,6 +53,7 @@ function view.initialze(model)
 			view.plots[i] = display.newImageRect("plot.png",30,30) 
 			view.plots[i].x = GRID_X_OFFSET + (_W / 10 * (i - 1))
 			view.plots[i].y = GRID_Y_OFFSET + (_H / 8 * (j))
+			view.plots[i].id = "plot" 
 			print(i)
 		end
 	end

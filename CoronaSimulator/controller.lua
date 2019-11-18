@@ -12,12 +12,9 @@ local controller = { }
 --
 
 
-function controller.initialze(model)
-	local object = display.newImage( "plot.png" )
-	object.id = "ball object"
+function controller.initialze(view)
 	
-
-	local function onObjectTouch( event )
+	local function onObjectTouch( event ) -- you cannot do this in unity 
 		if ( event.phase == "began" ) then
     		print( "Touch event began on: " .. event.target.id )
 			elseif ( event.phase == "ended" ) then
@@ -25,7 +22,12 @@ function controller.initialze(model)
 		end
 		return true
 	end
-	object:addEventListener( "touch", onObjectTouch )
+	--since lua doesn't really have arrays its weird to get a like array.length
+	for i=1,table.getn(view.plots) do
+		view.plots[i]:addEventListener( "touch", onObjectTouch )
+		print(i)
+	end
+	
 	
 	--onObjectTouch(event)
 end
