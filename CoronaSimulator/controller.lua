@@ -12,10 +12,11 @@ local controller = { }
 --
 
 
-function controller.initialze(view)
+function controller.initialze(view,model)
 	
 	local function onObjectTouch( event ) -- you cannot do this in unity 
 		if ( event.phase == "began" ) then
+			model.isGrowing()
     		print( "Touch event began on: " .. event.target.id )
 			elseif ( event.phase == "ended" ) then
     		print( "Touch event ended on: " .. event.target.id )
