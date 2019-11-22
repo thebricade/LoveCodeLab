@@ -75,9 +75,10 @@ function view.initialze(model)
 
 end
 
-function view.updateText(model)
-	
-	screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )	
+function view.updateText(model)	
+	--screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )
+	-- don't want to use newText we just want to change the text we already have
+	screenText.text =(model.plantsHarvested)	
 end
 
 function updatePlantsHarvest( ... )
