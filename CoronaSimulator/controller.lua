@@ -23,9 +23,11 @@ function controller.initialze(view)
 		return true
 	end
 	--since lua doesn't really have arrays its weird to get a like array.length
-	for i=1,table.getn(view.plots) do
+	-- http://lua-users.org/lists/lua-l/2011-05/msg00014.html
+	-- set is deprecated and to set and get you use metatables? maybe
+	for i=1,3 do
 		view.plots[i]:addEventListener( "touch", onObjectTouch )
-		print(i)
+		
 	end
 	
 	

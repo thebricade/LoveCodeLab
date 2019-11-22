@@ -5,6 +5,7 @@
 local view = { }
 
 view.plots = {} -- array to store plant plots 
+view.plotsLength =0
 
 _H = display.contentHeight; 
 _W = display.contentWidth; 
@@ -54,7 +55,8 @@ function view.initialze(model)
 			view.plots[i].x = GRID_X_OFFSET + (_W / 10 * (i - 1))
 			view.plots[i].y = GRID_Y_OFFSET + (_H / 8 * (j))
 			view.plots[i].id = "plot" 
-			print(i)
+			view.plotsLength = view.plotsLength + 1
+			print(view.plotsLength)
 		end
 	end
 		--[[
