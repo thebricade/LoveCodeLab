@@ -14,7 +14,7 @@ local model = require("model")
 local view = require("view")
 local controller = require("controller")
 
-model.initialze()
+model.initialze(view)
 view.initialze(model)
 controller.initialze(view,model)
 

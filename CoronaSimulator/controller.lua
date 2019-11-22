@@ -15,7 +15,7 @@ local controller = { }
 function controller.initialze(view,model)
 	
 	local function tapListener(event)
-		model.isGrowing()
+		model.harvestPlant(view)
 		print( "Object tapped: " .. tostring(event.target) )  -- "event.target" is the tapped object
     	return true
 	end

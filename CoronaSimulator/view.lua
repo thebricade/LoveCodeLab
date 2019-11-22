@@ -9,6 +9,7 @@ view.plotsLength =0
 
 _H = display.contentHeight; 
 _W = display.contentWidth; 
+screenText = display.newText
 
 --local _model = model
 
@@ -19,7 +20,7 @@ _W = display.contentWidth;
 	
 
 function view.initialze(model)
-	local screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )	
+	screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )	
 	--figure out how append string and variable 
 
 	--model.updatePlantsHarvest()
@@ -72,6 +73,11 @@ function view.initialze(model)
 	
 
 
+end
+
+function view.updateText(model)
+	
+	screenText = display.newText(model.plantsHarvested ,_W/2,_H/8, native.systemFontBold )	
 end
 
 function updatePlantsHarvest( ... )
