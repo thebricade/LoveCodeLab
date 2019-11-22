@@ -26,11 +26,21 @@ end
 
 
 function model.isGrowing()
-	local startTime = os.time() 
-	local endTime = startTime + 10 
-	repeat
+	local startTime
+	--if startTime not nill then
+	if startTime == nill then
+		startTime = os.time() 
+		local endTime = startTime + 10 
+	end
+
+	print(startTime)
+
+	--[[repeat
 		print("isgrowing")
-	until startTime >= endTime; 
+		--time is never updating. 
+		--startTime = os.time() -- still not right maybe print out the Start Time & End time to see how it looks 
+		print(startTime)
+	until startTime >= endTime; ]]
 
 end 
 

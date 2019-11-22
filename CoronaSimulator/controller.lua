@@ -14,9 +14,19 @@ local controller = { }
 
 function controller.initialze(view,model)
 	
-	local function onObjectTouch( event ) -- you cannot do this in unity 
+	local function tapListener(event)
+		model.isGrowing()
+		print( "Object tapped: " .. tostring(event.target) )  -- "event.target" is the tapped object
+    	return true
+	end
+
+
+	--touch events may run multiple times 
+	
+	--[[local function onObjectTouch( event ) -- you cannot do this in unity 
 		if ( event.phase == "began" ) then
-			model.isGrowing()
+			--model.isGrowing() this will get called multiple times
+
     		print( "Touch event began on: " .. event.target.id )
 			elseif ( event.phase == "ended" ) then
     		print( "Touch event ended on: " .. event.target.id )
@@ -32,7 +42,8 @@ function controller.initialze(view,model)
 	end
 	
 	
-	--onObjectTouch(event)
+	--onObjectTouch(event)--]]
+	view.plots[1]:addEventListener("tap", tapListener)
 end
 
 
